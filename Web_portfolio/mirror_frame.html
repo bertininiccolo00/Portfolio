@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design mirror frame — Niccolò Bertini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12161c;
+    --paper:#e9eef1;
+    --paper-2:#dfe6ea;
+    --blueprint:#2c5c82;
+    --blueprint-dim:#5b83a2;
+    --brass:#a97f3f;
+    --redline:#b5423a;
+    --dark:#12161c;
+    --off:#eef1f0;
+    --display: 'JetBrains Mono', monospace;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  img, video{max-width:100%; display:block; height:auto;}
+  
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* Background grid */
+  .grid-bg{
+    position:fixed; inset:0; z-index:-1;
+    background-image:
+      linear-gradient(var(--paper-2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-2) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity:0.55;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(233,238,241,0.86);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(18,22,28,0.12);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-mark{
+    font-family:var(--display); font-weight:700; font-size:14px; letter-spacing:0.02em;
+    display:flex; align-items:center; gap:8px; text-decoration:none;
+  }
+  .nav-mark .dot{width:8px; height:8px; background:var(--redline); display:inline-block; border-radius:50%;}
+  .back-link{font-family:var(--mono); font-size:13px; text-decoration:none; opacity:0.75; transition:opacity .2s;}
+  .back-link:hover{opacity:1;}
+
+  /* ---------- PROJECT HERO ---------- */
+  .project-hero{
+    padding:160px 0 80px;
+    border-bottom:1px solid rgba(18,22,28,0.12);
+  }
+  .project-hero h1{
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(2.1rem, 5vw, 3.2rem);
+    line-height:1.08; letter-spacing:-0.01em;
+    max-width:20ch;
+  }
+  .project-meta{
+    margin-top:24px; display:flex; gap:24px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12.5px; color:var(--blueprint); text-transform:uppercase;
+  }
+
+  /* ---------- CHECKERBOARD LAYOUT ---------- */
+  .project-content{padding:80px 0;}
+  
+  .row{
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+    margin-bottom:100px;
+  }
+  .row:last-child{margin-bottom:0;}
+  
+  .text-col h3{font-family:var(--display); font-size:1.4rem; font-weight:700; margin-bottom:16px;}
+  .text-col p{color:#454b53; margin-bottom:16px;}
+  
+  .media-col{
+    
+  }
+
+  /* Responsive styling per invertire l'ordine su mobile */
+  @media (max-width:860px){
+    .row{grid-template-columns:1fr; gap:32px; margin-bottom:64px;}
+    .row.reverse .text-col {order: -1;} /* Forza il testo sopra l'immagine su mobile */
+  }
+  
+  /* Sezione piè di pagina rapida */
+  .project-footer{
+    padding:60px 0; text-align:center; border-top:1px solid rgba(18,22,28,0.12);
+  }
+  .btn{
+    font-family:var(--mono); font-size:13px; padding:13px 22px; border:1.5px solid var(--ink);
+    text-decoration:none; display:inline-block; background:var(--ink); color:var(--paper);
+    transition:background .18s, transform .18s;
+  }
+  .btn:hover{background:var(--blueprint); border-color:var(--blueprint); transform:translateY(-1px);}
+
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark"><span class="dot"></span> N. BERTINI</a>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+  </div>
+</header>
+
+<section class="project-hero">
+  <div class="wrap">
+    <h1>Organic mirror frame</h1>
+    <div class="project-meta">
+      <span>Mechanical Design</span>
+      <span>Surface Modeling</span>
+      <span>3D Printing</span>
+    </div>
+  </div>
+</section>
+
+<section class="project-content">
+  <div class="wrap">
+    
+    <!-- Riga 1: Testo a sinistra, Immagine a destra -->
+    <div class="row">
+      <div class="text-col">
+		  <h3>Organic surface modeling</h3>
+		  <p>Translating freehand design sketches into manufacturable 3D geometry requires precise control over complex surfaces. The organic shape was built using boundary surfaces and sweeping lofts.</p>
+		  <p>A primary focus was maintaining G2 (curvature) continuity across all surface patches. This mathematical smoothness is essential for objects like mirror frames, ensuring that light reflects fluidly across the final manufactured piece without visible seams or harsh transitions.</p>
+	  </div>
+      <div class="media-col">
+        <!-- Sostituisci con il tuo asset -->
+        <img src="assets/Zebra.png" alt="Turbine blades close-up">
+      </div>
+    </div>
+
+    <!-- Riga 2: Immagine a sinistra, Testo a destra (aggiunta classe "reverse" per mobile) -->
+    <div class="row reverse">
+      <div class="media-col">
+        <!-- Sostituisci con il tuo asset (es. video turntable o render esploso) -->
+        <img src="assets/Mirror_loft.png" alt="Generator integration">
+      </div>
+      <div class="text-col">
+		  <h3>Parametric control for iteration</h3>
+		  <p>Sculptural furniture design relies heavily on visual proportions, which inevitably leads to multiple revision rounds with the design studio.</p>
+		  <p>To accommodate this, the CAD feature tree was structured robustly. By tying the complex surface generation to a master skeletal sketch, the overall dimensions and local flow of the frame could be tweaked iteratively without causing the surface geometry to fail or break.</p>
+	  </div>
+    </div>
+
+    <!-- Riga 3: Testo a sinistra, Immagine a destra -->
+    <div class="row">
+      <div class="text-col">
+		  <h3>From CAD to physical product</h3>
+		  <p>The engineered CAD model was exported for manufacturing, translating the complex digital surfaces into the final physical piece without losing the intended fluid aesthetics.</p>
+		  <p>The integrated rear mounting features and precise mirror pocket allowed for a seamless assembly process, resulting in a stable and flush wall-mounted final product.</p>
+	  </div>
+      <div class="media-col">
+        <!-- Sostituisci con il tuo asset -->
+        <img src="assets/Mirror_real.png" alt="real world application">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="project-footer">
+  <div class="wrap">
+    <a href="index.html" class="btn">Return to home</a>
+  </div>
+</div>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BWC2QKH8ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BWC2QKH8ZH');
+</script>
+
+</body>
+</html>
