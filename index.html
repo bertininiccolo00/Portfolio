@@ -611,7 +611,7 @@
     var btn = document.getElementById('theme-toggle');
     function refresh(){
       var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      btn.textContent = dark ? '☀ Chiaro' : '☾ Scuro';
+      btn.textContent = dark ? '☀ Light' : '☾ Dark';
       btn.setAttribute('aria-pressed', String(dark));
     }
     btn.addEventListener('click', function(){
